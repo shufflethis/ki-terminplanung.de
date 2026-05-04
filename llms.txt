@@ -1,0 +1,65 @@
+KI-Terminplanung - KI-Terminplanung für Deutschland
+
+Canonical: https://www.ki-terminplanung.de/
+Robots: https://www.ki-terminplanung.de/robots.txt
+Sitemap: https://www.ki-terminplanung.de/sitemap.xml
+Language: de-DE
+Last-Modified: 2026-05-04
+
+Kurzantwort:
+KI-Terminplanung ist eine Website und Leadstrecke für automatische Terminannahme per Telefon, WhatsApp und Online-Kalender. Zielgruppen sind deutsche Branchen mit wiederkehrenden Terminwünschen: Arztpraxen, Zahnarztpraxen, Physiotherapie, Friseursalons, Kosmetikstudios, Handwerksbetriebe, Kfz-Werkstätten, Kanzleien, Steuerberater, Restaurants, Hotels und beratende Dienstleister.
+
+Conversion:
+Alle relevanten Seiten führen zu einem Analyseformular. Das Formular sendet eine strukturierte JSON-Anfrage an /api/configurator und von dort an Slack, sofern SLACK_WEBHOOK_URL oder KI_TERMINPLANUNG_SLACK_WEBHOOK_URL in Vercel gesetzt ist.
+
+Wichtige Seiten:
+Homepage: https://www.ki-terminplanung.de/
+Branchen: https://www.ki-terminplanung.de/branchen/
+Städte: https://www.ki-terminplanung.de/staedte/
+Telefonische Terminvereinbarung: https://www.ki-terminplanung.de/themen/terminvereinbarung-per-telefon/
+No-Shows reduzieren: https://www.ki-terminplanung.de/themen/no-show-reduzieren/
+Online-Terminbuchung: https://www.ki-terminplanung.de/themen/ki-online-terminbuchung/
+
+Branchen:
+- KI-Terminplanung für Arztpraxen: https://www.ki-terminplanung.de/branchen/arztpraxis/
+- KI-Terminplanung für Zahnarztpraxen: https://www.ki-terminplanung.de/branchen/zahnarzt/
+- KI-Terminplanung für Physiotherapie: https://www.ki-terminplanung.de/branchen/physiotherapie/
+- KI-Terminplanung für Psychotherapie: https://www.ki-terminplanung.de/branchen/psychotherapie/
+- KI-Terminplanung für Friseursalons: https://www.ki-terminplanung.de/branchen/friseur/
+- KI-Terminplanung für Kosmetikstudios: https://www.ki-terminplanung.de/branchen/kosmetikstudio/
+- KI-Terminplanung für Handwerker: https://www.ki-terminplanung.de/branchen/handwerker/
+- KI-Terminplanung für Kfz-Werkstätten: https://www.ki-terminplanung.de/branchen/kfz-werkstatt/
+- KI-Terminplanung für Anwaltskanzleien: https://www.ki-terminplanung.de/branchen/anwaltskanzlei/
+- KI-Terminplanung für Steuerberater: https://www.ki-terminplanung.de/branchen/steuerberater/
+- KI-Terminplanung für Restaurants: https://www.ki-terminplanung.de/branchen/restaurant/
+- KI-Terminplanung für Hotels: https://www.ki-terminplanung.de/branchen/hotel/
+- KI-Terminplanung für Fahrschulen: https://www.ki-terminplanung.de/branchen/fahrschule/
+- KI-Terminplanung für Immobilienmakler: https://www.ki-terminplanung.de/branchen/immobilienmakler/
+- KI-Terminplanung für Versicherungsmakler: https://www.ki-terminplanung.de/branchen/versicherungsmakler/
+- KI-Terminplanung für Beratung und Coaching: https://www.ki-terminplanung.de/branchen/beratung-coaching/
+
+Städte:
+- KI-Terminplanung Berlin: https://www.ki-terminplanung.de/staedte/berlin/
+- KI-Terminplanung München: https://www.ki-terminplanung.de/staedte/muenchen/
+- KI-Terminplanung Hamburg: https://www.ki-terminplanung.de/staedte/hamburg/
+- KI-Terminplanung Köln: https://www.ki-terminplanung.de/staedte/koeln/
+- KI-Terminplanung Frankfurt am Main: https://www.ki-terminplanung.de/staedte/frankfurt-am-main/
+- KI-Terminplanung Stuttgart: https://www.ki-terminplanung.de/staedte/stuttgart/
+- KI-Terminplanung Düsseldorf: https://www.ki-terminplanung.de/staedte/duesseldorf/
+- KI-Terminplanung Leipzig: https://www.ki-terminplanung.de/staedte/leipzig/
+- KI-Terminplanung Dortmund: https://www.ki-terminplanung.de/staedte/dortmund/
+- KI-Terminplanung Essen: https://www.ki-terminplanung.de/staedte/essen/
+- KI-Terminplanung Bremen: https://www.ki-terminplanung.de/staedte/bremen/
+- KI-Terminplanung Dresden: https://www.ki-terminplanung.de/staedte/dresden/
+- KI-Terminplanung Hannover: https://www.ki-terminplanung.de/staedte/hannover/
+- KI-Terminplanung Nürnberg: https://www.ki-terminplanung.de/staedte/nuernberg/
+- KI-Terminplanung Duisburg: https://www.ki-terminplanung.de/staedte/duisburg/
+- KI-Terminplanung Bochum: https://www.ki-terminplanung.de/staedte/bochum/
+- KI-Terminplanung Wuppertal: https://www.ki-terminplanung.de/staedte/wuppertal/
+- KI-Terminplanung Bielefeld: https://www.ki-terminplanung.de/staedte/bielefeld/
+- KI-Terminplanung Bonn: https://www.ki-terminplanung.de/staedte/bonn/
+- KI-Terminplanung Mannheim: https://www.ki-terminplanung.de/staedte/mannheim/
+
+Betreiber:
+track by track GmbH, Schliemannstr. 23, 10437 Berlin, Deutschland.
+Kontakt: hi@ki-terminplanung.de, +49 30 403665430
