@@ -507,6 +507,108 @@ tr:last-child td {
   border-bottom: 0;
 }
 
+.integration-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.system-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 14px;
+  min-height: 218px;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.system-logo {
+  display: inline-grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 8px;
+  background: var(--soft-blue);
+  color: var(--green-dark);
+  font-size: 13px;
+  font-weight: 950;
+}
+
+.system-card h3,
+.channel-card h3 {
+  margin: 0 0 8px;
+  line-height: 1.15;
+}
+
+.system-card h3 {
+  font-size: 18px;
+}
+
+.system-card p,
+.channel-card p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.system-card p + p {
+  margin-top: 9px;
+}
+
+.system-method {
+  color: var(--blue) !important;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.channel-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 0.74fr) minmax(0, 1.26fr);
+  gap: 32px;
+  align-items: start;
+  margin-top: 42px;
+  padding-top: 36px;
+  border-top: 1px solid var(--line);
+}
+
+.channel-panel h2 {
+  margin: 0;
+  font-size: clamp(28px, 4vw, 42px);
+  line-height: 1.08;
+}
+
+.channel-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.channel-card {
+  min-height: 188px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.channel-card span {
+  display: inline-flex;
+  margin-bottom: 16px;
+  color: var(--coral);
+  font-size: 13px;
+  font-weight: 950;
+}
+
+.channel-card strong {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--blue);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
 .conversion {
   background: var(--green-dark);
   color: #fff;
@@ -884,11 +986,16 @@ textarea:focus {
 
   .trust-grid,
   .card-grid,
+  .integration-grid,
   .two-col,
   .conversion-grid,
   .process-grid,
   .footer-grid {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .channel-panel {
+    grid-template-columns: 1fr;
   }
 
   .hero {
@@ -921,12 +1028,17 @@ textarea:focus {
 
   .trust-grid,
   .card-grid,
+  .integration-grid,
   .two-col,
   .conversion-grid,
   .form-row,
   .package-grid,
   .process-grid,
   .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .channel-grid {
     grid-template-columns: 1fr;
   }
 

@@ -415,6 +415,117 @@ const useCases = [
     image: IMAGES.phone,
     intent: 'Erinnerungen sind kein Extra, sondern ein wirtschaftlicher Hebel für bessere Auslastung.',
   },
+  {
+    slug: 'kalenderintegration',
+    keyword: 'Kalendersysteme KI-Terminplanung',
+    subject: 'Kalenderintegration für KI-Terminplanung',
+    title: 'Kalendersysteme mit KI-Terminplanung verbinden',
+    description: 'Apple iCloud, Google Calendar, Microsoft 365, CalDAV, Calendly, Salesforce, SAP und Oracle in eine zentrale Terminlogik bringen.',
+    image: IMAGES.office,
+    intent: 'Das Thema ist nicht nur ein Chatbot. Entscheidend ist, ob aus jeder Anfrage ein echter Termin im richtigen Kalendersystem wird.',
+  },
+  {
+    slug: 'google-business-profile-terminbuchung',
+    keyword: 'Google Business Profile Terminbuchung',
+    subject: 'Google Unternehmensprofil Terminbuchung',
+    title: 'Google Business Profile für Terminbuchung nutzen',
+    description: 'Google-Unternehmensprofil, Website-Klicks, Anrufe, Suchbegriffe und Buchungslinks mit KI-Terminplanung verbinden.',
+    image: IMAGES.consulting,
+    intent: 'Lokale Nachfrage entsteht oft direkt in Google Suche und Maps. Diese Kontakte müssen ohne Umweg in Telefon, WhatsApp oder Kalender landen.',
+  },
+  {
+    slug: 'social-media-terminbuchung',
+    keyword: 'Social Media Terminbuchung',
+    subject: 'Social Media Terminbuchung',
+    title: 'Social Media und Website-Anfragen in Termine verwandeln',
+    description: 'Instagram, Facebook, LinkedIn, Website-Formulare und Booking-Links auf eine gemeinsame Terminlogik führen.',
+    image: IMAGES.phone,
+    intent: 'Social Media erzeugt Aufmerksamkeit, aber wirtschaftlich wird sie erst, wenn daraus ein gebuchter Beratungstermin, Praxisbesuch oder Reservierung entsteht.',
+  },
+];
+
+const calendarSystems = [
+  {
+    short: 'IC',
+    name: 'Apple iCloud Calendar',
+    method: 'via iCal-URL, Freigabe-Link oder CalDAV-nahem Setup',
+    use: 'Für kleine Teams, Praxen und Dienstleister, die bereits mit iPhone, iPad oder Mac planen.',
+  },
+  {
+    short: 'G',
+    name: 'Google Calendar',
+    method: 'Terminformate via .ics oder Google Calendar API',
+    use: 'Für Google Workspace, freigegebene Teamkalender und schnelle Online-Terminbuchung.',
+  },
+  {
+    short: 'M365',
+    name: 'Microsoft 365 & Exchange Online',
+    method: 'über Microsoft Graph API mit OAuth 2.0',
+    use: 'Für Outlook-Kalender, Ressourcen, Räume, Teamkalender und Enterprise-Rechte.',
+  },
+  {
+    short: 'CD',
+    name: 'CalDAV-Server',
+    method: 'standardisierte CalDAV-Schnittstelle',
+    use: 'Für Self-Hosting, datensparsame Setups und Organisationen mit eigener Infrastruktur.',
+  },
+  {
+    short: 'API',
+    name: 'Calendly, Doodle, Acuity, HubSpot',
+    method: 'API-Integration und Webhooks für Buchungs-Events',
+    use: 'Für bestehende Booking-Links, Marketing-Funnels, CRM-Übergaben und Event-Tracking.',
+  },
+  {
+    short: 'SF',
+    name: 'Salesforce Calendar',
+    method: 'REST-API mit Kunden- und Termin-Daten',
+    use: 'Für Sales-Teams, Beratung, Lead-Routing und Opportunity-nahe Terminprozesse.',
+  },
+  {
+    short: 'SAP',
+    name: 'SAP Schedule Manager',
+    method: 'OData-Service für Termin-Objekte',
+    use: 'Für Enterprise-Umgebungen mit Ressourcen, Standorten und internen Freigaben.',
+  },
+  {
+    short: 'OR',
+    name: 'Oracle Calendar / PeopleSoft',
+    method: 'SOAP- und REST-Schnittstellen',
+    use: 'Für umfassendes Termin- und Ressourcen-Management in größeren Organisationen.',
+  },
+];
+
+const demandChannels = [
+  {
+    name: 'Telefon-KI',
+    label: 'Anruf wird Termin',
+    text: 'Der KI-Rezeptionist nimmt Anrufe an, fragt Anliegen und Zeitfenster ab und übergibt direkt an Kalender oder Rückrufliste.',
+  },
+  {
+    name: 'WhatsApp',
+    label: 'Chat wird Buchung',
+    text: 'Terminwunsch, Umbuchung, Erinnerung und Bestätigung laufen über denselben Regeln wie Telefon und Website.',
+  },
+  {
+    name: 'Website & Landingpages',
+    label: 'Traffic wird Slot',
+    text: 'Formulare, Widgets und Booking-CTAs führen nicht ins Nirgendwo, sondern in eine konkrete Terminlogik.',
+  },
+  {
+    name: 'Google Unternehmensprofil',
+    label: 'Maps wird Nachfrage',
+    text: 'Buchungslink, Website-Klick, Anruf und Performance-Daten zeigen, welche lokalen Suchanfragen Termine auslösen.',
+  },
+  {
+    name: 'Social Media',
+    label: 'DM wird Ersttermin',
+    text: 'Instagram, Facebook, LinkedIn und Kampagnenlinks bekommen UTM-Tracking und denselben Buchungsprozess.',
+  },
+  {
+    name: 'CRM & Slack',
+    label: 'Lead wird Auftrag',
+    text: 'Jede Anfrage kommt strukturiert an: Kanal, Branche, Stadt, Kalenderwunsch, Paket und Notiz als JSON.',
+  },
 ];
 
 const pageRegistry = [];
@@ -621,8 +732,8 @@ function siteHeader() {
     <nav class="main-nav" id="main-nav" data-nav>
       <a href="/branchen/">Branchen</a>
       <a href="/staedte/">Städte</a>
+      <a href="/themen/kalenderintegration/">Kalendersysteme</a>
       <a href="/themen/terminvereinbarung-per-telefon/">Telefon-Termine</a>
-      <a href="/themen/no-show-reduzieren/">No-Shows</a>
       <a class="nav-cta" href="#angebot">Analyse anfordern</a>
     </nav>
   </div>
@@ -642,6 +753,7 @@ function siteFooter() {
       <ul>
         <li><a href="/branchen/">Branchen</a></li>
         <li><a href="/staedte/">Städte</a></li>
+        <li><a href="/themen/kalenderintegration/">Kalendersysteme</a></li>
         <li><a href="/themen/ki-online-terminbuchung/">Online-Terminbuchung</a></li>
         <li><a href="/themen/calendly-alternative-ki/">Calendly-Alternative</a></li>
         <li><a href="/llms.txt">llms.txt</a></li>
@@ -771,10 +883,16 @@ function conversionSection(sourceLabel = 'Website') {
         <label>Kalender
           <select name="kalender">
             <option>Google Calendar</option>
-            <option>Microsoft 365 / Outlook</option>
-            <option>Apple / iCloud</option>
-            <option>Calendly</option>
+            <option>Microsoft 365 / Exchange Online</option>
+            <option>Apple iCloud Calendar</option>
+            <option>CalDAV / Self-Hosted</option>
+            <option>Calendly / Doodle / Acuity</option>
+            <option>HubSpot</option>
+            <option>Salesforce</option>
+            <option>SAP Schedule Manager</option>
+            <option>Oracle / PeopleSoft</option>
             <option>Branchensoftware</option>
+            <option>Mehrere Systeme</option>
             <option>Noch offen</option>
           </select>
         </label>
@@ -808,8 +926,41 @@ function sourceBlock() {
       <a href="https://developers.google.com/search/docs/appearance/structured-data/intro-structured-data" rel="noopener noreferrer">strukturierte Daten</a>
       <a href="https://schema.org/FAQPage" rel="noopener noreferrer">FAQPage</a>
       <a href="https://eur-lex.europa.eu/eli/reg/2016/679/oj" rel="noopener noreferrer">DSGVO</a>
+      <a href="https://developers.google.com/workspace/calendar/api/guides/create-events" rel="noopener noreferrer">Google Calendar API</a>
+      <a href="https://learn.microsoft.com/en-us/graph/api/resources/calendar" rel="noopener noreferrer">Microsoft Graph Calendar</a>
     </div>
   </aside>`;
+}
+
+function integrationSection(sourceLabel = 'Terminprozess', muted = false) {
+  const systemCards = calendarSystems.map((system) => `<article class="system-card">
+    <span class="system-logo" aria-hidden="true">${esc(system.short)}</span>
+    <div>
+      <h3>${esc(system.name)}</h3>
+      <p class="system-method">${esc(system.method)}</p>
+      <p>${esc(system.use)}</p>
+    </div>
+  </article>`).join('');
+  const channelCards = demandChannels.map((channel, index) => `<article class="channel-card">
+    <span>${String(index + 1).padStart(2, '0')}</span>
+    <h3>${esc(channel.name)}</h3>
+    <strong>${esc(channel.label)}</strong>
+    <p>${esc(channel.text)}</p>
+  </article>`).join('');
+  return `<section class="section integration-section${muted ? ' section-muted' : ''}" id="kalendersysteme">
+    <div class="container">
+      ${sectionIntro('Kalender, Kanäle, Übergabe', 'Ein Terminprozess für alle relevanten Systeme', `${sourceLabel}: Entscheidend ist nicht nur ein Bot, sondern eine saubere Strecke von Anfragekanal über Pflichtfragen bis zum richtigen Kalender, CRM oder Slack-JSON.`)}
+      <div class="integration-grid">${systemCards}</div>
+      <div class="channel-panel">
+        <div>
+          <p class="kicker">Nachfragekanäle</p>
+          <h2>Telefon, WhatsApp, Website, Google und Social führen in dieselbe Terminlogik</h2>
+          <p class="lead">Viele Betriebe haben schon Reichweite: Website, Google Unternehmensprofil, Social Media, Kampagnen und Stammkunden per Telefon. Die KI macht daraus eine messbare Anfrage mit Branche, Stadt, Anliegen, Kalenderwunsch und nächstem Schritt.</p>
+        </div>
+        <div class="channel-grid">${channelCards}</div>
+      </div>
+    </div>
+  </section>`;
 }
 
 function linkCards(items, prefix = '') {
@@ -881,6 +1032,7 @@ function homePage() {
       </div>
     </div>
   </section>
+  ${integrationSection('Startseite')}
   <section class="section">
     <div class="container">
       ${sectionIntro('Deutschlandweit', 'Für Betriebe in Ihrer Stadt', 'Lokale Unternehmen brauchen schnelle Erreichbarkeit. Die Stadtansichten zeigen, welche Branchen besonders von automatischer Terminannahme profitieren.')}
@@ -989,13 +1141,17 @@ function industryPage(item) {
       <div class="table-wrap"><table><thead><tr><th>Situation</th><th>KI-Aktion</th><th>Ergebnis</th></tr></thead><tbody>${workflowRows}</tbody></table></div>
     </div>
   </section>
+  ${integrationSection(item.keyword)}
   <section class="section">
     <div class="container">
       ${sectionIntro('Interne Verlinkung', 'Passende Seiten im Cluster', 'Branchen, Städte und Themen sind gegenseitig verlinkt, damit Nutzer und Crawler den Zusammenhang verstehen.')}
       ${linkCards([
+        { href: '/themen/kalenderintegration/', name: 'Kalendersysteme', title: 'Kalendersysteme verbinden', description: 'Apple iCloud, Google Calendar, Microsoft 365, CalDAV, Calendly, Salesforce, SAP und Oracle.' },
         { href: '/themen/terminvereinbarung-per-telefon/', name: 'Telefon-Termine', title: 'Terminvereinbarung per Telefon', description: 'Anrufe automatisch annehmen und als Termin oder Rückruf übergeben.' },
         { href: '/themen/no-show-reduzieren/', name: 'No-Shows', title: 'No-Shows reduzieren', description: 'Erinnerungen, Bestätigungen und Wartelisten gegen leere Slots.' },
         { href: '/themen/ki-online-terminbuchung/', name: 'Online-Buchung', title: 'KI Online-Terminbuchung', description: 'Telefon, WhatsApp und Web-Kalender zusammenführen.' },
+        { href: '/themen/google-business-profile-terminbuchung/', name: 'Google Business Profile', title: 'Google Unternehmensprofil nutzen', description: 'Lokale Suche, Maps, Anrufe und Buchungslinks in einen messbaren Terminprozess führen.' },
+        { href: '/themen/social-media-terminbuchung/', name: 'Social Media', title: 'Social Media in Termine verwandeln', description: 'Instagram, Facebook, LinkedIn und Kampagnenlinks mit Terminlogik verbinden.' },
         ...related.map((r) => ({ href: `/branchen/${r.slug}/`, name: r.name, title: r.title, description: r.description })),
       ])}
     </div>
@@ -1103,6 +1259,7 @@ function cityPage(city) {
       <div><span>04</span><h3>Slack-JSON prüfen</h3><p>Jede Anfrage kommt strukturiert an und kann später in CRM oder Kalender erweitert werden.</p></div>
     </div>
   </section>
+  ${integrationSection(`KI-Terminplanung ${city.name}`, true)}
   ${conversionSection(`KI-Terminplanung ${city.name}`)}
   ${faqBlock(faq)}`;
 
@@ -1116,8 +1273,52 @@ function cityPage(city) {
   });
 }
 
+function useCaseHub() {
+  const faq = defaultFaq('KI-Terminplanung Themen', 'Die Themenseiten erklären einzelne Hebel wie Telefonannahme, WhatsApp, Kalenderintegration, No-Show-Reduktion und lokale Nachfragekanäle.');
+  const cards = useCases.map((item) => ({
+    href: `/themen/${item.slug}/`,
+    name: item.keyword,
+    title: item.title,
+    description: item.description,
+  }));
+  const body = `${hero({
+    eyebrow: 'Themen-Hub',
+    h1: 'Terminannahme über Telefon, WhatsApp, Kalender, Google und Social',
+    lead: 'Die Themenseiten bündeln die wichtigsten Suchintentionen rund um KI-Terminplanung: von Anrufannahme über Kalenderintegration bis zur strukturierten Slack-Übergabe.',
+    image: IMAGES.phone,
+    compact: true,
+    secondaryHref: '/branchen/',
+    secondary: 'Branchen ansehen',
+  })}
+  <section class="section">
+    <div class="container">
+      ${sectionIntro('Use Cases', 'Was rund um Termine wirklich gesucht wird', 'Diese Seiten verbinden einzelne Kanäle und Integrationen mit konkreter Terminlogik, damit Nutzer und Crawler den Produktnutzen schnell verstehen.')}
+      ${linkCards(cards)}
+    </div>
+  </section>
+  ${integrationSection('Themen-Hub', true)}
+  ${conversionSection('Themen Hub')}
+  ${faqBlock(faq)}`;
+  writePage('/themen', {
+    title: 'KI-Terminplanung Themen | Telefon, WhatsApp, Kalender und Google',
+    description: 'Themenseiten für KI-Terminplanung: Telefontermine, WhatsApp, Kalenderintegration, Google Unternehmensprofil, Social Media, No-Shows und Slack-Leadflow.',
+    image: IMAGES.phone,
+    priority: 0.88,
+    body,
+    schema: [
+      {
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        itemListElement: useCases.map((item, index) => ({ '@type': 'ListItem', position: index + 1, name: item.title, url: canonical(`/themen/${item.slug}`) })),
+      },
+      faqSchema(faq),
+    ],
+  });
+}
+
 function useCasePage(item) {
-  const faq = defaultFaq(item.keyword, item.intent);
+  const subject = item.subject ?? item.keyword;
+  const faq = defaultFaq(subject, item.intent);
   const relatedIndustries = industries.slice(0, 8);
   const body = `${hero({
     eyebrow: item.keyword,
@@ -1132,7 +1333,7 @@ function useCasePage(item) {
     <div class="container two-col">
       <div>
         <p class="kicker">Kurzantwort</p>
-        <h2>${esc(item.keyword)} sinnvoll einsetzen</h2>
+        <h2>${esc(subject)} sinnvoll einsetzen</h2>
         <p class="lead">${esc(item.intent)}</p>
         <ul class="check-list">
           <li>Einheitliche Terminregeln für Telefon, WhatsApp und Web.</li>
@@ -1146,6 +1347,7 @@ function useCasePage(item) {
       </figure>
     </div>
   </section>
+  ${integrationSection(subject, true)}
   <section class="section section-muted"><div class="container">
     ${sectionIntro('Passende Branchen', 'Wo dieser Use Case besonders stark ist', 'Die folgenden Branchen haben viele wiederkehrende Terminwünsche und profitieren von sauberer Vorqualifizierung.')}
     ${linkCards(relatedIndustries)}
@@ -1310,9 +1512,19 @@ Wichtige Seiten:
 Homepage: ${SITE.origin}/
 Branchen: ${SITE.origin}/branchen/
 Städte: ${SITE.origin}/staedte/
+Themen: ${SITE.origin}/themen/
 Telefonische Terminvereinbarung: ${SITE.origin}/themen/terminvereinbarung-per-telefon/
 No-Shows reduzieren: ${SITE.origin}/themen/no-show-reduzieren/
 Online-Terminbuchung: ${SITE.origin}/themen/ki-online-terminbuchung/
+Kalendersysteme: ${SITE.origin}/themen/kalenderintegration/
+Google Business Profile Terminbuchung: ${SITE.origin}/themen/google-business-profile-terminbuchung/
+Social Media Terminbuchung: ${SITE.origin}/themen/social-media-terminbuchung/
+
+Kalender- und Integrationssysteme:
+${calendarSystems.map((system) => `- ${system.name}: ${system.method}`).join('\n')}
+
+Nachfragekanäle:
+${demandChannels.map((channel) => `- ${channel.name}: ${channel.label}`).join('\n')}
 
 Branchen:
 ${industries.map((item) => `- ${item.title}: ${SITE.origin}/branchen/${item.slug}/`).join('\n')}
@@ -1334,6 +1546,7 @@ function run() {
   industries.forEach(industryPage);
   cityHub();
   cities.forEach(cityPage);
+  useCaseHub();
   useCases.forEach(useCasePage);
   legalPages();
   staticFiles();

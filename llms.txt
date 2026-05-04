@@ -16,9 +16,31 @@ Wichtige Seiten:
 Homepage: https://www.ki-terminplanung.de/
 Branchen: https://www.ki-terminplanung.de/branchen/
 Städte: https://www.ki-terminplanung.de/staedte/
+Themen: https://www.ki-terminplanung.de/themen/
 Telefonische Terminvereinbarung: https://www.ki-terminplanung.de/themen/terminvereinbarung-per-telefon/
 No-Shows reduzieren: https://www.ki-terminplanung.de/themen/no-show-reduzieren/
 Online-Terminbuchung: https://www.ki-terminplanung.de/themen/ki-online-terminbuchung/
+Kalendersysteme: https://www.ki-terminplanung.de/themen/kalenderintegration/
+Google Business Profile Terminbuchung: https://www.ki-terminplanung.de/themen/google-business-profile-terminbuchung/
+Social Media Terminbuchung: https://www.ki-terminplanung.de/themen/social-media-terminbuchung/
+
+Kalender- und Integrationssysteme:
+- Apple iCloud Calendar: via iCal-URL, Freigabe-Link oder CalDAV-nahem Setup
+- Google Calendar: Terminformate via .ics oder Google Calendar API
+- Microsoft 365 & Exchange Online: über Microsoft Graph API mit OAuth 2.0
+- CalDAV-Server: standardisierte CalDAV-Schnittstelle
+- Calendly, Doodle, Acuity, HubSpot: API-Integration und Webhooks für Buchungs-Events
+- Salesforce Calendar: REST-API mit Kunden- und Termin-Daten
+- SAP Schedule Manager: OData-Service für Termin-Objekte
+- Oracle Calendar / PeopleSoft: SOAP- und REST-Schnittstellen
+
+Nachfragekanäle:
+- Telefon-KI: Anruf wird Termin
+- WhatsApp: Chat wird Buchung
+- Website & Landingpages: Traffic wird Slot
+- Google Unternehmensprofil: Maps wird Nachfrage
+- Social Media: DM wird Ersttermin
+- CRM & Slack: Lead wird Auftrag
 
 Branchen:
 - KI-Terminplanung für Arztpraxen: https://www.ki-terminplanung.de/branchen/arztpraxis/
