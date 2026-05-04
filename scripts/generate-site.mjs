@@ -18,6 +18,23 @@ const SITE = {
   },
 };
 
+const LEGAL = {
+  company: 'track by track GmbH',
+  representative: 'Tobias Sander',
+  email: 'info@famefact.com',
+  phone: '030403665430',
+  fax: '030403665450',
+  duns: '34-024-8055',
+  registerCourt: 'Amtsgericht Berlin-Charlottenburg',
+  registerNumber: 'HRB 129805 B',
+  vatId: 'DE814954842',
+  address: {
+    streetAddress: 'Schliemannstr. 23',
+    postalCode: '10437',
+    addressLocality: 'Berlin',
+  },
+};
+
 const img = (id, w = 1400, h = 900) =>
   `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&h=${h}&q=80`;
 
@@ -1442,13 +1459,22 @@ function legalPages() {
     priority: 0.2,
     body: `<section class="legal-page"><div class="container narrow">
       <h1>Impressum</h1>
-      <p><strong>${esc(SITE.company)}</strong><br>${esc(SITE.address.streetAddress)}<br>${esc(SITE.address.postalCode)} ${esc(SITE.address.addressLocality)}<br>Deutschland</p>
+      <h2>Angaben gemäß § 5 DDG</h2>
+      <p><strong>${esc(LEGAL.company)}</strong><br>${esc(LEGAL.address.streetAddress)}<br>${esc(LEGAL.address.postalCode)} ${esc(LEGAL.address.addressLocality)}</p>
+      <h2>Vertreten durch</h2>
+      <p>${esc(LEGAL.representative)}</p>
       <h2>Kontakt</h2>
-      <p>E-Mail: <a href="mailto:${SITE.email}">${SITE.email}</a><br>Telefon: <a href="tel:${SITE.phone.replaceAll(' ', '')}">${SITE.phone}</a></p>
+      <p>Telefon: <a href="tel:${LEGAL.phone}">${esc(LEGAL.phone)}</a><br>Telefax: ${esc(LEGAL.fax)}<br>E-Mail: <a href="mailto:${LEGAL.email}">${esc(LEGAL.email)}</a></p>
+      <h2>DUNS-Nummer</h2>
+      <p>${esc(LEGAL.duns)}</p>
       <h2>Registereintrag</h2>
-      <p>Handelsregister: Amtsgericht Charlottenburg<br>HRB 265042 B<br>USt-IdNr.: DE364151626</p>
-      <h2>Geschäftsführer</h2>
-      <p>Dominik Eber</p>
+      <p>Eintragung im Handelsregister.<br>Registergericht: ${esc(LEGAL.registerCourt)}<br>Registernummer: ${esc(LEGAL.registerNumber)}</p>
+      <h2>Umsatzsteuer</h2>
+      <p>Umsatzsteuer-Identifikationsnummer gemäß §27 a Umsatzsteuergesetz:<br>${esc(LEGAL.vatId)}</p>
+      <h2>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
+      <p>${esc(LEGAL.representative)}<br>${esc(LEGAL.address.streetAddress)}<br>${esc(LEGAL.address.postalCode)} ${esc(LEGAL.address.addressLocality)}</p>
+      <h2>Streitschlichtung</h2>
+      <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
     </div></section>`,
   });
 
@@ -1461,13 +1487,13 @@ function legalPages() {
       <h1>Datenschutz</h1>
       <p>Diese Seite verarbeitet Kontakt- und Konfigurationsdaten, wenn Sie das Analyseformular absenden. Die Angaben werden zur Bearbeitung Ihrer Anfrage verwendet und können als strukturierte Nachricht an interne Systeme wie Slack, Microsoft Teams, CRM, Webhooks oder Tabellen übertragen werden.</p>
       <h2>Verantwortlicher</h2>
-      <p>${esc(SITE.company)}, ${esc(SITE.address.streetAddress)}, ${esc(SITE.address.postalCode)} ${esc(SITE.address.addressLocality)}, E-Mail: <a href="mailto:${SITE.email}">${SITE.email}</a>.</p>
+      <p>${esc(LEGAL.company)}, ${esc(LEGAL.address.streetAddress)}, ${esc(LEGAL.address.postalCode)} ${esc(LEGAL.address.addressLocality)}, vertreten durch ${esc(LEGAL.representative)}, E-Mail: <a href="mailto:${LEGAL.email}">${esc(LEGAL.email)}</a>.</p>
       <h2>Kontaktformular</h2>
       <p>Erfasst werden Firma, Name, E-Mail, Telefon, Branche, Stadt, Kalender- und Paketangaben sowie Ihre Notiz. Rechtsgrundlage ist die Bearbeitung vorvertraglicher Anfragen.</p>
       <h2>Analytics</h2>
       <p>Diese Website nutzt datenschutzfreundliche Reichweitenmessung über Plausible beziehungsweise die konfigurierte Plausible-Instanz. Es werden keine personenbezogenen Werbeprofile erstellt.</p>
       <h2>Ihre Rechte</h2>
-      <p>Sie haben Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung, Widerspruch und Datenübertragbarkeit nach DSGVO. Schreiben Sie dazu an <a href="mailto:${SITE.email}">${SITE.email}</a>.</p>
+      <p>Sie haben Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung, Widerspruch und Datenübertragbarkeit nach DSGVO. Schreiben Sie dazu an <a href="mailto:${LEGAL.email}">${esc(LEGAL.email)}</a>.</p>
     </div></section>`,
   });
 
