@@ -60,7 +60,7 @@
     </div>
     <ul class="hero-signals">
       <li>Rufumleitung statt neuer Telefonanlage</li>
-      <li>Slack-JSON für jeden Lead</li>
+      <li>Lead als Aufgabe, Chat oder JSON</li>
       <li>DSGVO-Setup mit AVV möglich</li>
     </ul>
   </div>
@@ -74,7 +74,7 @@
         <ul class="check-list">
           <li>Telefonische Anfragen werden nicht mehr durch Besetztzeichen oder Mailbox verloren.</li>
           <li>WhatsApp- und Web-Anfragen können denselben Terminregeln folgen.</li>
-          <li>Jede Anfrage landet mit Stadt, Branche und Paketdaten strukturiert in Slack.</li>
+          <li>Jede Anfrage landet mit Stadt, Branche und Paketdaten strukturiert im passenden Übergabekanal.</li>
         </ul>
       </div>
       <div class="stat-stack">
@@ -115,7 +115,7 @@
       <div><span>01</span><h3>Anrufarten sammeln</h3><p>Termin, Rückruf, Absage, Notfall, Beratung oder Reservierung werden getrennt.</p></div>
       <div><span>02</span><h3>Regeln definieren</h3><p>Öffnungszeiten, Dauer, Mitarbeiter, Standorte und Pufferzeiten werden festgelegt.</p></div>
       <div><span>03</span><h3>Rufumleitung starten</h3><p>Die bestehende Nummer bleibt. Die KI greift dauerhaft oder nach Regel.</p></div>
-      <div><span>04</span><h3>Slack-JSON prüfen</h3><p>Jede Anfrage kommt strukturiert an und kann später in CRM oder Kalender erweitert werden.</p></div>
+      <div><span>04</span><h3>Übergabe prüfen</h3><p>Jede Anfrage kommt strukturiert an und kann später in CRM, Kalender, Slack, Teams oder WhatsApp erweitert werden.</p></div>
     </div>
   </section>
   <section class="section integration-section section-muted" id="kalendersysteme">
@@ -123,7 +123,7 @@
       <div class="section-intro">
     <p class="kicker">Kalender, Kanäle, Übergabe</p>
     <h2>Ein Terminprozess für alle relevanten Systeme</h2>
-    <p>KI-Terminplanung Duisburg: Entscheidend ist nicht nur ein Bot, sondern eine saubere Strecke von Anfragekanal über Pflichtfragen bis zum richtigen Kalender, CRM oder Slack-JSON.</p>
+    <p>KI-Terminplanung Duisburg: Entscheidend ist nicht nur ein Bot, sondern eine saubere Strecke von Anfragekanal über Pflichtfragen bis zum richtigen Kalender, CRM oder Übergabekanal.</p>
   </div>
       <div class="integration-grid"><article class="system-card">
     <span class="system-logo" aria-hidden="true">IC</span>
@@ -215,9 +215,41 @@
     <p>Instagram, Facebook, LinkedIn und Kampagnenlinks bekommen UTM-Tracking und denselben Buchungsprozess.</p>
   </article><article class="channel-card">
     <span>06</span>
-    <h3>CRM &amp; Slack</h3>
-    <strong>Lead wird Auftrag</strong>
-    <p>Jede Anfrage kommt strukturiert an: Kanal, Branche, Stadt, Kalenderwunsch, Paket und Notiz als JSON.</p>
+    <h3>CRM &amp; Übergabe</h3>
+    <strong>Lead wird Aufgabe</strong>
+    <p>Jede Anfrage kommt strukturiert an: Kanal, Branche, Stadt, Kalenderwunsch, Paket, Notiz und gewünschter Übergabeweg.</p>
+  </article></div>
+      </div>
+      <div class="handoff-panel" id="uebergabe">
+        <div class="section-intro">
+    <p class="kicker">Übergabe ohne Postfach-Chaos</p>
+    <h2>Der Termin-Lead landet dort, wo das Team ihn wirklich bearbeitet</h2>
+    <p>E-Mail kann funktionieren, ist aber für viele Betriebe bereits überlastet. Deshalb wird die Anfrage als klare Aufgabe, Chat-Nachricht, CRM-Eintrag, Webhook oder Tagesliste gedacht.</p>
+  </div>
+        <div class="handoff-grid"><article class="handoff-card">
+    <h3>Slack</h3>
+    <strong>Für digitale Teams</strong>
+    <p>Strukturierte Anfrage mit JSON, UTM, Quelle und Notiz direkt in den passenden Kanal.</p>
+  </article><article class="handoff-card">
+    <h3>WhatsApp ans Team</h3>
+    <strong>Für Betriebe ohne Tool-Overhead</strong>
+    <p>Kurze, verständliche Zusammenfassung für Teams, die sowieso am Smartphone koordinieren.</p>
+  </article><article class="handoff-card">
+    <h3>Microsoft Teams</h3>
+    <strong>Für Office-Organisationen</strong>
+    <p>Terminlead als Kanalnachricht oder Aufgabe für Praxen, Kanzleien und Unternehmen mit Microsoft 365.</p>
+  </article><article class="handoff-card">
+    <h3>CRM oder Webhook</h3>
+    <strong>Für Vertrieb und Service</strong>
+    <p>Lead-Daten gehen direkt in HubSpot, Salesforce, Pipedrive, Make, Zapier oder eigene Systeme.</p>
+  </article><article class="handoff-card">
+    <h3>E-Mail als Fallback</h3>
+    <strong>Nicht noch ein Postfach</strong>
+    <p>E-Mail bleibt möglich, aber nur komprimiert und strukturiert, damit keine Anfrage im Posteingang versandet.</p>
+  </article><article class="handoff-card">
+    <h3>Tabelle oder Tagesliste</h3>
+    <strong>Für einfache Abläufe</strong>
+    <p>Google Sheets, Excel oder eine tägliche Rückrufliste reichen oft für den ersten pragmatischen Start.</p>
   </article></div>
       </div>
     </div>
@@ -227,10 +259,10 @@
     <div>
       <p class="kicker">Ein Ziel</p>
       <h2 id="angebot-title">Kostenlose KI-Terminplanung-Analyse anfordern</h2>
-      <p class="lead">Konfigurieren Sie den Terminprozess grob vor. Die Anfrage landet als strukturiertes JSON in Slack, inklusive Branche, Anrufvolumen, Paket und Seite, von der die Anfrage kam.</p>
+      <p class="lead">Konfigurieren Sie den Terminprozess grob vor. Die Anfrage wird als strukturierter Termin-Lead übergeben: Slack, WhatsApp, Microsoft Teams, CRM, Webhook, Tabelle oder E-Mail-Fallback.</p>
       <div class="quote-box">
         <strong>Was danach passiert:</strong>
-        <span>Wir prüfen Anrufarten, Kalenderlogik, Datenschutz und Integrationen. Danach erhalten Sie eine konkrete Empfehlung statt eines generischen Demo-Termins.</span>
+        <span>Wir prüfen Anrufarten, Kalenderlogik, Datenschutz und den Übergabekanal. Danach erhalten Sie eine konkrete Empfehlung statt eines generischen Demo-Termins.</span>
       </div>
     </div>
     <form class="lead-form" id="lead-form" data-source="KI-Terminplanung Duisburg">
@@ -308,6 +340,17 @@
           </select>
         </label>
       </div>
+      <label>Wo soll die Anfrage landen?
+        <select name="uebergabe">
+          <option>Slack-Kanal</option>
+          <option>WhatsApp ans Team</option>
+          <option>Microsoft Teams</option>
+          <option>CRM / Webhook</option>
+          <option>Google Sheet / Tagesliste</option>
+          <option>E-Mail nur als Fallback</option>
+          <option>Noch offen</option>
+        </select>
+      </label>
       <label>Was soll die KI zuerst übernehmen?
         <textarea name="notiz" rows="4" placeholder="z. B. Telefontermine außerhalb der Öffnungszeiten, No-Shows reduzieren, Warteliste füllen"></textarea>
       </label>

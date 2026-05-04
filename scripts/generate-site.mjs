@@ -522,9 +522,42 @@ const demandChannels = [
     text: 'Instagram, Facebook, LinkedIn und Kampagnenlinks bekommen UTM-Tracking und denselben Buchungsprozess.',
   },
   {
-    name: 'CRM & Slack',
-    label: 'Lead wird Auftrag',
-    text: 'Jede Anfrage kommt strukturiert an: Kanal, Branche, Stadt, Kalenderwunsch, Paket und Notiz als JSON.',
+    name: 'CRM & Übergabe',
+    label: 'Lead wird Aufgabe',
+    text: 'Jede Anfrage kommt strukturiert an: Kanal, Branche, Stadt, Kalenderwunsch, Paket, Notiz und gewünschter Übergabeweg.',
+  },
+];
+
+const handoffChannels = [
+  {
+    name: 'Slack',
+    label: 'Für digitale Teams',
+    text: 'Strukturierte Anfrage mit JSON, UTM, Quelle und Notiz direkt in den passenden Kanal.',
+  },
+  {
+    name: 'WhatsApp ans Team',
+    label: 'Für Betriebe ohne Tool-Overhead',
+    text: 'Kurze, verständliche Zusammenfassung für Teams, die sowieso am Smartphone koordinieren.',
+  },
+  {
+    name: 'Microsoft Teams',
+    label: 'Für Office-Organisationen',
+    text: 'Terminlead als Kanalnachricht oder Aufgabe für Praxen, Kanzleien und Unternehmen mit Microsoft 365.',
+  },
+  {
+    name: 'CRM oder Webhook',
+    label: 'Für Vertrieb und Service',
+    text: 'Lead-Daten gehen direkt in HubSpot, Salesforce, Pipedrive, Make, Zapier oder eigene Systeme.',
+  },
+  {
+    name: 'E-Mail als Fallback',
+    label: 'Nicht noch ein Postfach',
+    text: 'E-Mail bleibt möglich, aber nur komprimiert und strukturiert, damit keine Anfrage im Posteingang versandet.',
+  },
+  {
+    name: 'Tabelle oder Tagesliste',
+    label: 'Für einfache Abläufe',
+    text: 'Google Sheets, Excel oder eine tägliche Rückrufliste reichen oft für den ersten pragmatischen Start.',
   },
 ];
 
@@ -794,7 +827,7 @@ function hero({ eyebrow, h1, lead, image, primary = 'Analyse anfordern', seconda
     </div>
     <ul class="hero-signals">
       <li>Rufumleitung statt neuer Telefonanlage</li>
-      <li>Slack-JSON für jeden Lead</li>
+      <li>Lead als Aufgabe, Chat oder JSON</li>
       <li>DSGVO-Setup mit AVV möglich</li>
     </ul>
   </div>
@@ -816,10 +849,10 @@ function conversionSection(sourceLabel = 'Website') {
     <div>
       <p class="kicker">Ein Ziel</p>
       <h2 id="angebot-title">Kostenlose KI-Terminplanung-Analyse anfordern</h2>
-      <p class="lead">Konfigurieren Sie den Terminprozess grob vor. Die Anfrage landet als strukturiertes JSON in Slack, inklusive Branche, Anrufvolumen, Paket und Seite, von der die Anfrage kam.</p>
+      <p class="lead">Konfigurieren Sie den Terminprozess grob vor. Die Anfrage wird als strukturierter Termin-Lead übergeben: Slack, WhatsApp, Microsoft Teams, CRM, Webhook, Tabelle oder E-Mail-Fallback.</p>
       <div class="quote-box">
         <strong>Was danach passiert:</strong>
-        <span>Wir prüfen Anrufarten, Kalenderlogik, Datenschutz und Integrationen. Danach erhalten Sie eine konkrete Empfehlung statt eines generischen Demo-Termins.</span>
+        <span>Wir prüfen Anrufarten, Kalenderlogik, Datenschutz und den Übergabekanal. Danach erhalten Sie eine konkrete Empfehlung statt eines generischen Demo-Termins.</span>
       </div>
     </div>
     <form class="lead-form" id="lead-form" data-source="${esc(sourceLabel)}">
@@ -897,6 +930,17 @@ function conversionSection(sourceLabel = 'Website') {
           </select>
         </label>
       </div>
+      <label>Wo soll die Anfrage landen?
+        <select name="uebergabe">
+          <option>Slack-Kanal</option>
+          <option>WhatsApp ans Team</option>
+          <option>Microsoft Teams</option>
+          <option>CRM / Webhook</option>
+          <option>Google Sheet / Tagesliste</option>
+          <option>E-Mail nur als Fallback</option>
+          <option>Noch offen</option>
+        </select>
+      </label>
       <label>Was soll die KI zuerst übernehmen?
         <textarea name="notiz" rows="4" placeholder="z. B. Telefontermine außerhalb der Öffnungszeiten, No-Shows reduzieren, Warteliste füllen"></textarea>
       </label>
@@ -947,9 +991,14 @@ function integrationSection(sourceLabel = 'Terminprozess', muted = false) {
     <strong>${esc(channel.label)}</strong>
     <p>${esc(channel.text)}</p>
   </article>`).join('');
+  const handoffCards = handoffChannels.map((channel) => `<article class="handoff-card">
+    <h3>${esc(channel.name)}</h3>
+    <strong>${esc(channel.label)}</strong>
+    <p>${esc(channel.text)}</p>
+  </article>`).join('');
   return `<section class="section integration-section${muted ? ' section-muted' : ''}" id="kalendersysteme">
     <div class="container">
-      ${sectionIntro('Kalender, Kanäle, Übergabe', 'Ein Terminprozess für alle relevanten Systeme', `${sourceLabel}: Entscheidend ist nicht nur ein Bot, sondern eine saubere Strecke von Anfragekanal über Pflichtfragen bis zum richtigen Kalender, CRM oder Slack-JSON.`)}
+      ${sectionIntro('Kalender, Kanäle, Übergabe', 'Ein Terminprozess für alle relevanten Systeme', `${sourceLabel}: Entscheidend ist nicht nur ein Bot, sondern eine saubere Strecke von Anfragekanal über Pflichtfragen bis zum richtigen Kalender, CRM oder Übergabekanal.`)}
       <div class="integration-grid">${systemCards}</div>
       <div class="channel-panel">
         <div>
@@ -958,6 +1007,10 @@ function integrationSection(sourceLabel = 'Terminprozess', muted = false) {
           <p class="lead">Viele Betriebe haben schon Reichweite: Website, Google Unternehmensprofil, Social Media, Kampagnen und Stammkunden per Telefon. Die KI macht daraus eine messbare Anfrage mit Branche, Stadt, Anliegen, Kalenderwunsch und nächstem Schritt.</p>
         </div>
         <div class="channel-grid">${channelCards}</div>
+      </div>
+      <div class="handoff-panel" id="uebergabe">
+        ${sectionIntro('Übergabe ohne Postfach-Chaos', 'Der Termin-Lead landet dort, wo das Team ihn wirklich bearbeitet', 'E-Mail kann funktionieren, ist aber für viele Betriebe bereits überlastet. Deshalb wird die Anfrage als klare Aufgabe, Chat-Nachricht, CRM-Eintrag, Webhook oder Tagesliste gedacht.')}
+        <div class="handoff-grid">${handoffCards}</div>
       </div>
     </div>
   </section>`;
@@ -996,8 +1049,8 @@ function homePage() {
   const faq = defaultFaq('KI-Terminplanung', 'Sie eignet sich besonders für Betriebe mit vielen wiederkehrenden Terminwünschen.');
   const body = `${hero({
     eyebrow: 'KI-Terminplanung für Deutschland',
-    h1: 'Termine automatisch annehmen, buchen und als Slack-Lead übergeben',
-    lead: 'Eine fokussierte Terminmaschine für Branchen mit echter Nachfrage: Telefon-KI, WhatsApp-Buchung, Online-Kalender, Erinnerungen und ein einziges Conversion-Ziel.',
+    h1: 'Termine automatisch annehmen, buchen und als klare Aufgabe übergeben',
+    lead: 'Eine fokussierte Terminmaschine für Branchen mit echter Nachfrage: Telefon-KI, WhatsApp-Buchung, Online-Kalender, Erinnerungen und ein einziger verwertbarer Termin-Lead.',
     image: IMAGES.home,
     secondaryHref: '/branchen/',
     secondary: 'Nischen ansehen',
@@ -1006,7 +1059,7 @@ function homePage() {
     <div class="container trust-grid">
       <div><strong>24/7</strong><span>Terminannahme</span></div>
       <div><strong>40+</strong><span>Branchen & Städte</span></div>
-      <div><strong>1 Ziel</strong><span>Slack-JSON Anfrage</span></div>
+      <div><strong>1 Ziel</strong><span>Termin-Lead statt Postfach-Chaos</span></div>
       <div><strong>EU + AVV</strong><span>DSGVO-Prozess</span></div>
     </div>
   </section>
@@ -1026,7 +1079,7 @@ function homePage() {
       </div>
       <div class="comparison-list">
         <div><span>Ohne KI</span><strong>Mailbox, Rückrufliste, Besetztzeichen</strong></div>
-        <div><span>Mit KI-Terminplanung</span><strong>Anliegen, Branche, Kalender, Paket und Notiz als JSON</strong></div>
+        <div><span>Mit KI-Terminplanung</span><strong>Anliegen, Branche, Kalender, Übergabeweg, Paket und Notiz</strong></div>
         <div><span>Ohne Terminregeln</span><strong>Jeder Anruf muss manuell nachgefragt werden</strong></div>
         <div><span>Mit Terminregeln</span><strong>Branche, Anlass, Kalender und Übergabe sind vorqualifiziert</strong></div>
       </div>
@@ -1045,7 +1098,7 @@ function homePage() {
 
   writePage('/', {
     title: 'KI-Terminplanung für Deutschland | Telefon, WhatsApp und Kalender',
-    description: 'KI-Terminplanung für Branchen in Deutschland: Telefon-KI, WhatsApp, Online-Kalender, No-Show-Reduktion, Branchen- und Stadtseiten mit Slack-Leadflow.',
+    description: 'KI-Terminplanung für Branchen in Deutschland: Telefon-KI, WhatsApp, Online-Kalender, No-Show-Reduktion, Branchen- und Stadtseiten mit strukturiertem Leadflow.',
     image: IMAGES.home,
     priority: 1,
     changefreq: 'weekly',
@@ -1099,7 +1152,12 @@ function industryHub() {
 
 function industryPage(item) {
   const related = industries.filter((other) => other.slug !== item.slug).slice(0, 6);
-  const cityLinks = cities.slice(0, 10).map((city) => ({ href: `/staedte/${city.slug}/`, name: `${item.keyword} ${city.name}`, title: `${item.name} in ${city.name}`, description: `${item.context}: lokale Terminannahme für ${item.plural}.` }));
+  const cityLinks = cities.slice(0, 10).map((city) => ({
+    href: `/staedte/${city.slug}/`,
+    name: `${item.keyword} ${city.name}`,
+    title: `${item.name} in ${city.name}`,
+    description: `Lokale Terminannahme für ${item.plural} in ${city.name}: Anrufe, WhatsApp und Kalenderregeln strukturiert zusammenführen.`,
+  }));
   const faq = [
     ...defaultFaq(item.keyword, `Für ${item.audience} zählt vor allem: ${item.accent}.`),
     {
@@ -1108,10 +1166,10 @@ function industryPage(item) {
     },
     {
       q: `Kann ${item.keyword} mit bestehenden Tools starten?`,
-      a: 'Ja. Ein pragmatischer Start läuft oft über Rufumleitung, Kalenderfreigabe und Slack- oder E-Mail-Übergabe. Direkte Integrationen können danach ergänzt werden.',
+      a: 'Ja. Ein pragmatischer Start läuft oft über Rufumleitung, Kalenderfreigabe und eine Übergabe an Slack, WhatsApp, Teams, CRM, Tabelle oder E-Mail-Fallback. Direkte Integrationen können danach ergänzt werden.',
     },
   ];
-  const workflowRows = item.workflows.map(([title, text]) => `<tr><td>${esc(title)}</td><td>${esc(text)}</td><td>Strukturierte Übergabe an Team, Kalender oder Slack</td></tr>`).join('');
+  const workflowRows = item.workflows.map(([title, text]) => `<tr><td>${esc(title)}</td><td>${esc(text)}</td><td>Strukturierte Übergabe an Team, Kalender, CRM oder Chat</td></tr>`).join('');
   const body = `${hero({
     eyebrow: item.keyword,
     h1: item.title,
@@ -1235,7 +1293,7 @@ function cityPage(city) {
         <ul class="check-list">
           <li>Telefonische Anfragen werden nicht mehr durch Besetztzeichen oder Mailbox verloren.</li>
           <li>WhatsApp- und Web-Anfragen können denselben Terminregeln folgen.</li>
-          <li>Jede Anfrage landet mit Stadt, Branche und Paketdaten strukturiert in Slack.</li>
+          <li>Jede Anfrage landet mit Stadt, Branche und Paketdaten strukturiert im passenden Übergabekanal.</li>
         </ul>
       </div>
       <div class="stat-stack">
@@ -1256,7 +1314,7 @@ function cityPage(city) {
       <div><span>01</span><h3>Anrufarten sammeln</h3><p>Termin, Rückruf, Absage, Notfall, Beratung oder Reservierung werden getrennt.</p></div>
       <div><span>02</span><h3>Regeln definieren</h3><p>Öffnungszeiten, Dauer, Mitarbeiter, Standorte und Pufferzeiten werden festgelegt.</p></div>
       <div><span>03</span><h3>Rufumleitung starten</h3><p>Die bestehende Nummer bleibt. Die KI greift dauerhaft oder nach Regel.</p></div>
-      <div><span>04</span><h3>Slack-JSON prüfen</h3><p>Jede Anfrage kommt strukturiert an und kann später in CRM oder Kalender erweitert werden.</p></div>
+      <div><span>04</span><h3>Übergabe prüfen</h3><p>Jede Anfrage kommt strukturiert an und kann später in CRM, Kalender, Slack, Teams oder WhatsApp erweitert werden.</p></div>
     </div>
   </section>
   ${integrationSection(`KI-Terminplanung ${city.name}`, true)}
@@ -1284,7 +1342,7 @@ function useCaseHub() {
   const body = `${hero({
     eyebrow: 'Themen-Hub',
     h1: 'Terminannahme über Telefon, WhatsApp, Kalender, Google und Social',
-    lead: 'Die Themenseiten bündeln die wichtigsten Suchintentionen rund um KI-Terminplanung: von Anrufannahme über Kalenderintegration bis zur strukturierten Slack-Übergabe.',
+    lead: 'Die Themenseiten bündeln die wichtigsten Suchintentionen rund um KI-Terminplanung: von Anrufannahme über Kalenderintegration bis zur strukturierten Übergabe an Team, CRM oder Chat.',
     image: IMAGES.phone,
     compact: true,
     secondaryHref: '/branchen/',
@@ -1301,7 +1359,7 @@ function useCaseHub() {
   ${faqBlock(faq)}`;
   writePage('/themen', {
     title: 'KI-Terminplanung Themen | Telefon, WhatsApp, Kalender und Google',
-    description: 'Themenseiten für KI-Terminplanung: Telefontermine, WhatsApp, Kalenderintegration, Google Unternehmensprofil, Social Media, No-Shows und Slack-Leadflow.',
+    description: 'Themenseiten für KI-Terminplanung: Telefontermine, WhatsApp, Kalenderintegration, Google Unternehmensprofil, Social Media, No-Shows und strukturierter Leadflow.',
     image: IMAGES.phone,
     priority: 0.88,
     body,
@@ -1338,7 +1396,7 @@ function useCasePage(item) {
         <ul class="check-list">
           <li>Einheitliche Terminregeln für Telefon, WhatsApp und Web.</li>
           <li>Pflichtfragen vor dem Rückruf statt unvollständiger Notizen.</li>
-          <li>Slack-Übergabe mit JSON für schnelle Weiterverarbeitung.</li>
+          <li>Übergabe an Slack, WhatsApp, Teams, CRM, Webhook oder Tagesliste.</li>
         </ul>
       </div>
       <figure class="media-panel">
@@ -1396,12 +1454,12 @@ function legalPages() {
 
   writePage('/datenschutz', {
     title: 'Datenschutz | KI-Terminplanung',
-    description: 'Datenschutzhinweise für KI-Terminplanung, Kontaktformular, Slack-Leadflow und Plausible Analytics.',
+    description: 'Datenschutzhinweise für KI-Terminplanung, Kontaktformular, Leadflow und Plausible Analytics.',
     image: IMAGES.office,
     priority: 0.2,
     body: `<section class="legal-page"><div class="container narrow">
       <h1>Datenschutz</h1>
-      <p>Diese Seite verarbeitet Kontakt- und Konfigurationsdaten, wenn Sie das Analyseformular absenden. Die Angaben werden zur Bearbeitung Ihrer Anfrage verwendet und können als strukturierte Nachricht an interne Systeme wie Slack übertragen werden.</p>
+      <p>Diese Seite verarbeitet Kontakt- und Konfigurationsdaten, wenn Sie das Analyseformular absenden. Die Angaben werden zur Bearbeitung Ihrer Anfrage verwendet und können als strukturierte Nachricht an interne Systeme wie Slack, Microsoft Teams, CRM, Webhooks oder Tabellen übertragen werden.</p>
       <h2>Verantwortlicher</h2>
       <p>${esc(SITE.company)}, ${esc(SITE.address.streetAddress)}, ${esc(SITE.address.postalCode)} ${esc(SITE.address.addressLocality)}, E-Mail: <a href="mailto:${SITE.email}">${SITE.email}</a>.</p>
       <h2>Kontaktformular</h2>
@@ -1506,7 +1564,7 @@ Kurzantwort:
 KI-Terminplanung ist eine Website und Leadstrecke für automatische Terminannahme per Telefon, WhatsApp und Online-Kalender. Zielgruppen sind deutsche Branchen mit wiederkehrenden Terminwünschen: Arztpraxen, Zahnarztpraxen, Physiotherapie, Friseursalons, Kosmetikstudios, Handwerksbetriebe, Kfz-Werkstätten, Kanzleien, Steuerberater, Restaurants, Hotels und beratende Dienstleister.
 
 Conversion:
-Alle relevanten Seiten führen zu einem Analyseformular. Das Formular sendet eine strukturierte JSON-Anfrage an /api/configurator und von dort an Slack, sofern SLACK_WEBHOOK_URL oder KI_TERMINPLANUNG_SLACK_WEBHOOK_URL in Vercel gesetzt ist.
+Alle relevanten Seiten führen zu einem Analyseformular. Das Formular sendet eine strukturierte Anfrage an /api/configurator. Operativ ist aktuell Slack per Webhook konfiguriert; als Produktlogik sind außerdem WhatsApp, Microsoft Teams, CRM/Webhook, Tabelle und E-Mail-Fallback vorgesehen.
 
 Wichtige Seiten:
 Homepage: ${SITE.origin}/
@@ -1525,6 +1583,9 @@ ${calendarSystems.map((system) => `- ${system.name}: ${system.method}`).join('\n
 
 Nachfragekanäle:
 ${demandChannels.map((channel) => `- ${channel.name}: ${channel.label}`).join('\n')}
+
+Übergabewege:
+${handoffChannels.map((channel) => `- ${channel.name}: ${channel.label}`).join('\n')}
 
 Branchen:
 ${industries.map((item) => `- ${item.title}: ${SITE.origin}/branchen/${item.slug}/`).join('\n')}

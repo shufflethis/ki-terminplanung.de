@@ -537,7 +537,8 @@ tr:last-child td {
 }
 
 .system-card h3,
-.channel-card h3 {
+.channel-card h3,
+.handoff-card h3 {
   margin: 0 0 8px;
   line-height: 1.15;
 }
@@ -547,7 +548,8 @@ tr:last-child td {
 }
 
 .system-card p,
-.channel-card p {
+.channel-card p,
+.handoff-card p {
   margin: 0;
   color: var(--muted);
 }
@@ -604,6 +606,33 @@ tr:last-child td {
   display: block;
   margin-bottom: 8px;
   color: var(--blue);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.handoff-panel {
+  margin-top: 46px;
+}
+
+.handoff-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.handoff-card {
+  min-height: 176px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.handoff-card strong {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--coral);
   font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -987,6 +1016,7 @@ textarea:focus {
   .trust-grid,
   .card-grid,
   .integration-grid,
+  .handoff-grid,
   .two-col,
   .conversion-grid,
   .process-grid,
@@ -1029,6 +1059,7 @@ textarea:focus {
   .trust-grid,
   .card-grid,
   .integration-grid,
+  .handoff-grid,
   .two-col,
   .conversion-grid,
   .form-row,

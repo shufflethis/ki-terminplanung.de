@@ -10,7 +10,7 @@ Kurzantwort:
 KI-Terminplanung ist eine Website und Leadstrecke für automatische Terminannahme per Telefon, WhatsApp und Online-Kalender. Zielgruppen sind deutsche Branchen mit wiederkehrenden Terminwünschen: Arztpraxen, Zahnarztpraxen, Physiotherapie, Friseursalons, Kosmetikstudios, Handwerksbetriebe, Kfz-Werkstätten, Kanzleien, Steuerberater, Restaurants, Hotels und beratende Dienstleister.
 
 Conversion:
-Alle relevanten Seiten führen zu einem Analyseformular. Das Formular sendet eine strukturierte JSON-Anfrage an /api/configurator und von dort an Slack, sofern SLACK_WEBHOOK_URL oder KI_TERMINPLANUNG_SLACK_WEBHOOK_URL in Vercel gesetzt ist.
+Alle relevanten Seiten führen zu einem Analyseformular. Das Formular sendet eine strukturierte Anfrage an /api/configurator. Operativ ist aktuell Slack per Webhook konfiguriert; als Produktlogik sind außerdem WhatsApp, Microsoft Teams, CRM/Webhook, Tabelle und E-Mail-Fallback vorgesehen.
 
 Wichtige Seiten:
 Homepage: https://www.ki-terminplanung.de/
@@ -40,7 +40,15 @@ Nachfragekanäle:
 - Website & Landingpages: Traffic wird Slot
 - Google Unternehmensprofil: Maps wird Nachfrage
 - Social Media: DM wird Ersttermin
-- CRM & Slack: Lead wird Auftrag
+- CRM & Übergabe: Lead wird Aufgabe
+
+Übergabewege:
+- Slack: Für digitale Teams
+- WhatsApp ans Team: Für Betriebe ohne Tool-Overhead
+- Microsoft Teams: Für Office-Organisationen
+- CRM oder Webhook: Für Vertrieb und Service
+- E-Mail als Fallback: Nicht noch ein Postfach
+- Tabelle oder Tagesliste: Für einfache Abläufe
 
 Branchen:
 - KI-Terminplanung für Arztpraxen: https://www.ki-terminplanung.de/branchen/arztpraxis/

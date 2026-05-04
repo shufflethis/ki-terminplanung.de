@@ -80,6 +80,7 @@ module.exports = async function handler(req, res) {
       telefon: clean(body.telefon, 80),
       stadt: clean(body.stadt, 120),
       kalender: clean(body.kalender, 160),
+      uebergabe: clean(body.uebergabe, 160),
       anrufeProTag: Number(body.anrufeProTag || 0),
       aiRufnummern: Number(body.aiRufnummern || 1),
       minutenPaket: clean(body.minutenPaket, 40),
@@ -120,6 +121,8 @@ module.exports = async function handler(req, res) {
             { type: 'mrkdwn', text: `*Setup Pro:*\n${payload.setupPaketPro ? 'Ja' : 'Nein'}` },
             { type: 'mrkdwn', text: `*Monatlich:*\n${formatter.format(payload.monatlichGesamt)}` },
             { type: 'mrkdwn', text: `*Einmalig:*\n${formatter.format(payload.einmaligGesamt)}` },
+            { type: 'mrkdwn', text: `*Kalender:*\n${payload.kalender || '-'}` },
+            { type: 'mrkdwn', text: `*Übergabe:*\n${payload.uebergabe || '-'}` },
           ],
         },
         {
